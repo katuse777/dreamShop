@@ -1,7 +1,6 @@
 package edu.learningspring.dreamshops.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +11,6 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Product {
     @Id
@@ -36,4 +34,15 @@ public class Product {
     // be associated with many images.
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true) // any unreferenced images in the database will be deleted.
     private List<Image> images;
+
+    // 6-argument constructor
+    public Product(String name, String brand, BigDecimal price,
+                   int inventory, String description, Category category) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.inventory = inventory;
+        this.description = description;
+        this.category = category;
+    }
 }

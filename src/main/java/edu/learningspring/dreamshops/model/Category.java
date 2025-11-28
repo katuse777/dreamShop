@@ -22,4 +22,8 @@ public class Category {
     // The category class and product class have a one-to-many relationship, that is, 1 category can contain many products
     @OneToMany(mappedBy = "category")
     private List<Product> products;
+
+    public Category(String name) {
+        this.name = name;
+    }
 }
